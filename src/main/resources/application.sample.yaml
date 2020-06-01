@@ -1,0 +1,150 @@
+verificationservice:
+  country_phone_code: 232
+  country_phone_length: 8
+
+  attribute_definitions:
+    -
+      name: ID
+      unique: true
+      cleaners:
+        - no.priv.garshol.duke.cleaners.TrimCleaner
+        - no.priv.garshol.duke.cleaners.StripNontextCharacters
+        - no.priv.garshol.duke.cleaners.LowerCaseNormalizeCleaner
+      comparators:
+        -
+          comparator: no.priv.garshol.duke.comparators.ExactComparator
+          threshold: 1.0
+    -
+      name: PHONE_NUMBER
+      unique: true
+      cleaners:
+        - no.priv.garshol.duke.cleaners.TrimCleaner
+        - no.priv.garshol.duke.cleaners.StripNontextCharacters
+        - no.priv.garshol.duke.cleaners.LowerCaseNormalizeCleaner
+        - no.priv.garshol.duke.cleaners.PhoneNumberCleaner
+      comparators:
+        -
+          comparator: no.priv.garshol.duke.comparators.ExactComparator
+          threshold: 1.0
+    -
+      name: FACIAL_PORTRAIT
+    -
+      name: BIO_FINGERPRINT
+      unique: true
+    -
+      name: BIO_FACIAL
+      unique: true
+    -
+      name: FIRST_NAME
+      cleaners:
+        - no.priv.garshol.duke.cleaners.TrimCleaner
+        - no.priv.garshol.duke.cleaners.StripNontextCharacters
+        - no.priv.garshol.duke.cleaners.LowerCaseNormalizeCleaner
+      comparators:
+        -
+          comparator: no.priv.garshol.duke.comparators.PersonNameComparator
+          threshold: 0.8
+        -
+          comparator: no.priv.garshol.duke.comparators.SoundexComparator
+          threshold: 0.9
+        -
+          comparator: no.priv.garshol.duke.comparators.MetaphoneComparator
+          threshold: 0.9
+        -
+          comparator: no.priv.garshol.duke.comparators.JaroWinkler
+          threshold: 0.8
+    -
+      name: LAST_NAME
+      cleaners:
+        - no.priv.garshol.duke.cleaners.TrimCleaner
+        - no.priv.garshol.duke.cleaners.StripNontextCharacters
+        - no.priv.garshol.duke.cleaners.LowerCaseNormalizeCleaner
+      comparators:
+        -
+          comparator: no.priv.garshol.duke.comparators.PersonNameComparator
+          threshold: 0.8
+        -
+          comparator: no.priv.garshol.duke.comparators.SoundexComparator
+          threshold: 0.9
+        -
+          comparator: no.priv.garshol.duke.comparators.MetaphoneComparator
+          threshold: 0.9
+        -
+          comparator: no.priv.garshol.duke.comparators.JaroWinkler
+          threshold: 0.8
+    -
+      name: OTHER_NAMES
+    -
+      name: ADDRESS
+      cleaners:
+        - no.priv.garshol.duke.cleaners.TrimCleaner
+        - no.priv.garshol.duke.cleaners.StripNontextCharacters
+        - no.priv.garshol.duke.cleaners.LowerCaseNormalizeCleaner
+      comparators:
+        -
+          comparator: no.priv.garshol.duke.comparators.WeightedLevenshtein
+          threshold: 0.8
+        -
+          comparator: no.priv.garshol.duke.comparators.QGramComparator
+          threshold: 0.8
+        -
+          comparator: no.priv.garshol.duke.comparators.JaroWinkler
+          threshold: 0.8
+    -
+      name: ADDRESS_2
+      cleaners:
+        - no.priv.garshol.duke.cleaners.TrimCleaner
+        - no.priv.garshol.duke.cleaners.StripNontextCharacters
+        - no.priv.garshol.duke.cleaners.LowerCaseNormalizeCleaner
+      comparators:
+        -
+          comparator: no.priv.garshol.duke.comparators.Levenshtein
+          threshold: 0.8
+        -
+          comparator: no.priv.garshol.duke.comparators.QGramComparator
+          threshold: 0.8
+        -
+          comparator: no.priv.garshol.duke.comparators.JaroWinkler
+          threshold: 0.8
+    -
+      name: ADDRESS_CITY
+      cleaners:
+        - no.priv.garshol.duke.cleaners.TrimCleaner
+        - no.priv.garshol.duke.cleaners.StripNontextCharacters
+        - no.priv.garshol.duke.cleaners.LowerCaseNormalizeCleaner
+      comparators:
+        -
+          comparator: no.priv.garshol.duke.comparators.Levenshtein
+          threshold: 0.8
+        -
+          comparator: no.priv.garshol.duke.comparators.JaroWinkler
+          threshold: 0.8
+    -
+      name: ADDRESS_STATE
+      cleaners:
+        - no.priv.garshol.duke.cleaners.TrimCleaner
+        - no.priv.garshol.duke.cleaners.StripNontextCharacters
+        - no.priv.garshol.duke.cleaners.LowerCaseNormalizeCleaner
+      comparators:
+        -
+          comparator: no.priv.garshol.duke.comparators.Levenshtein
+          threshold: 0.8
+        -
+          comparator: no.priv.garshol.duke.comparators.JaroWinkler
+          threshold: 0.8
+    -
+      name: DATE_OF_BIRTH
+      cleaners:
+        - no.priv.garshol.duke.cleaners.TrimCleaner
+      comparators:
+        -
+          comparator: no.priv.garshol.duke.comparators.ExactComparator
+          threshold: 1.0
+    -
+      name: GENDER
+      cleaners:
+        - no.priv.garshol.duke.cleaners.TrimCleaner
+      comparators:
+        -
+          comparator: no.priv.garshol.duke.comparators.ExactComparator
+          threshold: 1.0
